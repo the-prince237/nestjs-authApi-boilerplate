@@ -1,0 +1,12 @@
+{
+  "classes": [
+    {
+      "names": [
+        {
+          "path": "user-create.input",
+          "className": "UserCreateInput"
+        }
+      ]
+    }
+  ]
+}

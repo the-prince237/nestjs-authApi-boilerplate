@@ -1,0 +1,14 @@
+{
+  "templates": [
+    {
+      "templateFile": "./src/codegen/templates/adminCrudResolver.template.ts",
+      "modelFile": "./src/codegen/models/admin-entities.json"
+    },
+    {
+      "templateFile": "./src/codegen/templates/input-args.template.ts",
+      "modelFile": "./src/codegen/models/input-args.json"
+    }
+  ],
+  "compileTypeScript": true,
+  "typeScriptConfigFile": "./tsconfig.codegen.json"
+}
