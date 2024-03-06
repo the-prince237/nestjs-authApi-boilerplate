@@ -1,14 +1,14 @@
-import { JwtService } from '@nestjs/jwt';
-import { PrismaService } from 'src/prisma.module';
-import { LoginDto } from './dto/login-user.dto';
 import {
   BadRequestException,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { UserCreateInput } from 'src/@generated/typegraphql';
-import { UsersService } from '../users/users.service';
+import { PrismaService } from 'src/prisma.module';
+import { UsersService } from '../apollo/users/users.service';
+import { LoginDto } from './dto/login-user.dto';
 
 @Injectable()
 export class AuthService {
@@ -41,7 +41,10 @@ export class AuthService {
   }
 
   async register(registerArgs: UserCreateInput): Promise<any> {
-    const user = await this.UserService.createUser(registerArgs);
+    const encryptedPassword = await bcrypt.hash(registerArgs.password, 10);
+    const registerPayload = { ...registerArgs, password: encryptedPassword };
+    const user = await this.UserService.createUser(registerPayload);
+
     return {
       token: this.jwtService.sign({ username: user.username }),
     };

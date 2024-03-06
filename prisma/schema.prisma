@@ -30,15 +30,15 @@ model User {
   id        BigInt   @id @default(autoincrement())
   /// @TypeGraphQL.omit(input: true)
   gid       String   @unique
-  /// @HideField({ match: ['UserCreateInput', 'UserUpdateInput'] })
+  /// @TypeGraphQL.omit(input: true)
   urlSlug   String   @unique
   firstName String   @db.VarChar(100)
   lastName  String   @db.VarChar(100)
-  password  String?  @db.VarChar(100)
+  password  String   @db.VarChar(100)
   username  String   @unique @db.VarChar(100)
   email     String   @unique @db.VarChar(45)
-  /// @TypeGraphQL.omit(input: true)
+  /// @TypeGraphQL.omit(input: ['create', 'update'])
   createdAt DateTime @default(now())
-  /// @TypeGraphQL.omit(input: true)
+  /// @TypeGraphQL.omit(input: ['create', 'update'])
   updatedAt DateTime @updatedAt
 }

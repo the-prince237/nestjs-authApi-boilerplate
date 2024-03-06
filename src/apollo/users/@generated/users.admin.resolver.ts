@@ -1,13 +1,13 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 import { UseGuards } from '@nestjs/common';
+import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { AccessGuard, Actions, UseAbility } from 'nest-casl';
-import { JwtAuthGuard } from '../../auth/auth.guard';
+import { JwtAuthGuard } from '../../../auth/auth.guard';
 
+import { ListMetadata } from '../../types/ListMetadata';
 import { User } from '../entities/user.entity';
 import { UsersService } from '../users.service';
-import { UsersHook } from './users.hook';
-import { ListMetadata } from '../../types/ListMetadata';
 import { UserAdminArgs } from './dto/user.admin.args';
+import { UsersHook } from './users.hook';
 
 @Resolver(() => User)
 export class UsersAdminCrud {

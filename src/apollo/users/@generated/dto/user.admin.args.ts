@@ -1,4 +1,4 @@
-import { Field, Int, ArgsType } from '@nestjs/graphql';
+import { ArgsType, Field, Int } from '@nestjs/graphql';
 import { SortOrder } from 'src/@generated/typegraphql';
 import { UserAdminFilter } from './user.admin.filter';
 @ArgsType()

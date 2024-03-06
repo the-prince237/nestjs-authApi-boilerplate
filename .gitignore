@@ -3,7 +3,7 @@
 /node_modules
 
 # generated code
-/src/@generated
+# **/@generated
 /src/codegen/templates/**.js
 
 # Logs

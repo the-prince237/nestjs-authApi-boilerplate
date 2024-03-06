@@ -15,12 +15,3 @@ export class OffsetPaginationArgs {
   @Field(() => SortOrder, { nullable: true })
   sortOrder?: SortOrder;
 }
-
-@ArgsType()
-export class SoldOffsetPaginationArgs extends OffsetPaginationArgs {
-  @Field(() => Date, { nullable: true })
-  from?: Date;
-
-  @Field(() => Date, { nullable: true })
-  to?: Date;
-}

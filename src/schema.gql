@@ -1,0 +1,102 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""
+The `BigInt` scalar type represents non-fractional signed whole numeric values.
+"""
+scalar BigInt
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+input LoginDto {
+  password: String!
+  username: String!
+}
+
+type Mutation {
+  register(registerArgs: UserCreateInput!): RegisterResponse!
+}
+
+type Query {
+  getAllUser: [User!]!
+  login(loginDto: LoginDto!): User!
+}
+
+type RegisterResponse {
+  token: String!
+}
+
+type User {
+  createdAt: DateTime!
+  email: String!
+  firstName: String!
+  gid: String!
+  id: BigInt!
+  lastName: String!
+  password: String!
+  updatedAt: DateTime!
+  urlSlug: String!
+  username: String!
+}
+
+type UserAvgAggregate {
+  id: Float
+}
+
+type UserCountAggregate {
+  _all: Int!
+  createdAt: Int!
+  email: Int!
+  firstName: Int!
+  gid: Int!
+  id: Int!
+  lastName: Int!
+  password: Int!
+  updatedAt: Int!
+  urlSlug: Int!
+  username: Int!
+}
+
+input UserCreateInput {
+  createdAt: DateTime
+  email: String!
+  firstName: String!
+  lastName: String!
+  password: String!
+  updatedAt: DateTime
+  username: String!
+}
+
+type UserMaxAggregate {
+  createdAt: DateTime
+  email: String
+  firstName: String
+  gid: String
+  id: BigInt
+  lastName: String
+  password: String
+  updatedAt: DateTime
+  urlSlug: String
+  username: String
+}
+
+type UserMinAggregate {
+  createdAt: DateTime
+  email: String
+  firstName: String
+  gid: String
+  id: BigInt
+  lastName: String
+  password: String
+  updatedAt: DateTime
+  urlSlug: String
+  username: String
+}
+
+type UserSumAggregate {
+  id: BigInt
+}

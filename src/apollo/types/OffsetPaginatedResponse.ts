@@ -22,7 +22,7 @@ class OffsetPageInfo {
   next?: number | null;
 }
 
-export default function OffsetPaginatedResponse<TItem>(
+export default function OffsetPaginatedResponse<TItem extends object>(
   TItemClass: ClassType<TItem>,
 ) {
   @ObjectType(`${TItemClass.name}OffsetPaginationResponse`)

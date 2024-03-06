@@ -13,7 +13,7 @@ class PageInfo {
   endCursor?: string;
 }
 
-export default function CursorPaginatedResponse<TItem>(
+export default function CursorPaginatedResponse<TItem extends object>(
   TItemClass: ClassType<TItem>,
 ) {
   @ObjectType(`${TItemClass.name}Edge`)

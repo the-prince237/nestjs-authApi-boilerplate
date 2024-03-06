@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { Request, SubjectBeforeFilterHook } from 'nest-casl';
-import { UsersService } from '../users.service';
-import { User } from '../entities/user.entity';
 import { SlugOrUid } from '../../types/ProductQueryArgs';
+import { User } from '../entities/user.entity';
+import { UsersService } from '../users.service';
 @Injectable()
 export class UsersHook implements SubjectBeforeFilterHook<User, Request> {
   constructor(private readonly usersService: UsersService) {}

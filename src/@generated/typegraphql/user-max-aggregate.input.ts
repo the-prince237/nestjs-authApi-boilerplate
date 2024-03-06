@@ -1,0 +1,34 @@
+import { Field, HideField, InputType } from '@nestjs/graphql';
+
+@InputType()
+export class UserMaxAggregateInput {
+  @HideField()
+  id?: true;
+
+  @HideField()
+  gid?: true;
+
+  @HideField()
+  urlSlug?: true;
+
+  @Field(() => Boolean, { nullable: true })
+  firstName?: true;
+
+  @Field(() => Boolean, { nullable: true })
+  lastName?: true;
+
+  @Field(() => Boolean, { nullable: true })
+  password?: true;
+
+  @Field(() => Boolean, { nullable: true })
+  username?: true;
+
+  @Field(() => Boolean, { nullable: true })
+  email?: true;
+
+  @Field(() => Boolean, { nullable: true })
+  createdAt?: true;
+
+  @Field(() => Boolean, { nullable: true })
+  updatedAt?: true;
+}

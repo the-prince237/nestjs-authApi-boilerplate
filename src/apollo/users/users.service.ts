@@ -1,6 +1,6 @@
-import { PrismaService } from 'src/prisma.module';
 import { ConflictException, Injectable } from '@nestjs/common';
 import { UserCreateInput } from 'src/@generated/typegraphql';
+import { PrismaService } from 'src/prisma.module';
 import { SlugOrUid } from '../types/ProductQueryArgs';
 
 @Injectable()
