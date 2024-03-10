@@ -12,4 +12,4 @@ ENV NODE_ENV production
 RUN yarn format && yarn lint
 RUN yarn build
 
-CMD ["dist/main.js"]
+CMD ["dist/src/main.js"]
