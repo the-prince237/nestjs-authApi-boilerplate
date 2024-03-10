@@ -5,7 +5,7 @@ WORKDIR /usr/app
 
 COPY . .
 
-RUN yarn install --immutable --immutable-cache --check-cache && sleep 30
+RUN yarn install
 
 ENV NODE_ENV production
 

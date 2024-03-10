@@ -61,8 +61,6 @@ export class AuthService {
 
     const user = await this.UserService.createUser(registerPayload);
 
-    console.log({ user });
-
     return {
       token: this.jwtService.sign(
         { username: user.username },

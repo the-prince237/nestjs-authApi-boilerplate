@@ -27,8 +27,9 @@ import { UsersService } from './users/users.service';
     CaslModule.forFeature({ permissions }),
     HttpModule,
     ConfigModule,
-    JwtModule.registerAsync({
-      useFactory: async () => ({ secret: 'w3PDlfr0H2za8TU0' }),
+    JwtModule.register({
+      secret: 'w3PDlfr0H2za8TU0',
+      global: true,
     }),
   ],
 })
