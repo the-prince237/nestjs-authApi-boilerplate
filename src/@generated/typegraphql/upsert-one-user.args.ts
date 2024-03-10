@@ -11,7 +11,7 @@ export class UpsertOneUserArgs {
   @Type(() => UserWhereUniqueInput)
   where!: Prisma.AtLeast<
     UserWhereUniqueInput,
-    'id' | 'gid' | 'urlSlug' | 'username' | 'email'
+    'id' | 'gid' | 'urlSlug' | 'username' | 'email' | 'firstName_lastName'
   >;
 
   @Field(() => UserCreateInput, { nullable: false })

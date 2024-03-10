@@ -1,13 +1,10 @@
 import { Field, InputType } from '@nestjs/graphql';
-import { Length } from 'class-validator';
 
 @InputType()
-export class LoginDto {
+export class UserFirstNameLastNameCompoundUniqueInput {
   @Field(() => String, { nullable: false })
-  @Length(0, 100)
-  username: string;
+  firstName!: string;
 
   @Field(() => String, { nullable: false })
-  @Length(0, 100)
-  password: string;
+  lastName!: string;
 }

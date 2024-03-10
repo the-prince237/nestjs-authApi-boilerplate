@@ -26,10 +26,10 @@ export class UserCountAggregateInput {
   @Field(() => Boolean, { nullable: true })
   email?: true;
 
-  @Field(() => Boolean, { nullable: true })
+  @HideField()
   createdAt?: true;
 
-  @Field(() => Boolean, { nullable: true })
+  @HideField()
   updatedAt?: true;
 
   @Field(() => Boolean, { nullable: true })

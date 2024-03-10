@@ -1,38 +1,39 @@
-import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { HttpModule } from '@nestjs/axios';
 import { MiddlewareConsumer, Module } from '@nestjs/common';
-import { GraphQLModule } from '@nestjs/graphql';
+import { JwtModule, JwtService } from '@nestjs/jwt';
 import { json } from 'body-parser';
-import { resolvers } from 'graphql-scalars';
-import { AuthModule } from 'src/auth/auth.module';
-import { PrismaService } from 'src/prisma.module';
+import { graphqlUploadExpress } from 'graphql-upload';
+import { CaslModule } from 'nest-casl';
+import { PrismaService } from 'nestjs-prisma';
+import { ConfigModule } from 'src/config/config.module';
+import { permissions } from './apollo.permissions';
+import { AuthResolver } from './auth/auth.resolver';
+import { AuthService } from './auth/auth.service';
+import { UsersAdminCrud } from './users/@generated/users.admin.resolver';
 import { UsersResolver } from './users/users.resolver';
 import { UsersService } from './users/users.service';
 
 @Module({
-  providers: [PrismaService, UsersService, UsersResolver],
+  providers: [
+    UsersService,
+    UsersResolver,
+    UsersAdminCrud,
+    AuthService,
+    AuthResolver,
+    JwtService,
+    PrismaService,
+  ],
   imports: [
-    GraphQLModule.forRoot<ApolloDriverConfig>({
-      driver: ApolloDriver,
-      autoSchemaFile: 'src/schema.gql',
-      sortSchema: true,
-      introspection: true,
-      resolvers,
-      csrfPrevention: false,
-      status400ForVariableCoercionErrors: true,
-      formatError: (formattedError, error) => {
-        console.log('formattedError', formattedError);
-        console.log('error', error);
-        return formattedError;
-      },
-      playground: true,
-      fieldResolverEnhancers: ['guards'],
-      context: ({ req, res }) => ({ req, res }),
+    CaslModule.forFeature({ permissions }),
+    HttpModule,
+    ConfigModule,
+    JwtModule.registerAsync({
+      useFactory: async () => ({ secret: process.env.JWT_SECRET }),
     }),
-    AuthModule,
   ],
 })
 export class ApolloModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(json()).forRoutes('graphql');
+    consumer.apply(json(), graphqlUploadExpress()).forRoutes('graphql');
   }
 }

@@ -5,7 +5,7 @@ import { UserAvgAggregateInput } from './user-avg-aggregate.input';
 import { UserCountAggregateInput } from './user-count-aggregate.input';
 import { UserMaxAggregateInput } from './user-max-aggregate.input';
 import { UserMinAggregateInput } from './user-min-aggregate.input';
-import { UserOrderByWithRelationInput } from './user-order-by-with-relation.input';
+import { UserOrderByWithRelationAndSearchRelevanceInput } from './user-order-by-with-relation-and-search-relevance.input';
 import { UserSumAggregateInput } from './user-sum-aggregate.input';
 import { UserWhereUniqueInput } from './user-where-unique.input';
 import { UserWhereInput } from './user-where.input';
@@ -16,13 +16,15 @@ export class UserAggregateArgs {
   @Type(() => UserWhereInput)
   where?: UserWhereInput;
 
-  @Field(() => [UserOrderByWithRelationInput], { nullable: true })
-  orderBy?: Array<UserOrderByWithRelationInput>;
+  @Field(() => [UserOrderByWithRelationAndSearchRelevanceInput], {
+    nullable: true,
+  })
+  orderBy?: Array<UserOrderByWithRelationAndSearchRelevanceInput>;
 
   @Field(() => UserWhereUniqueInput, { nullable: true })
   cursor?: Prisma.AtLeast<
     UserWhereUniqueInput,
-    'id' | 'gid' | 'urlSlug' | 'username' | 'email'
+    'id' | 'gid' | 'urlSlug' | 'username' | 'email' | 'firstName_lastName'
   >;
 
   @Field(() => Int, { nullable: true })

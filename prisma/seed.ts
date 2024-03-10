@@ -1,14 +1,17 @@
 import { PrismaClient } from '@prisma/client';
+import * as bcrypt from 'bcrypt';
 import slug from 'elegant-slug';
 import { v4 as uuidv4 } from 'uuid';
 
 const prisma = new PrismaClient();
 
 async function main() {
+  const password = 'albafikaforNestAuthApp@84';
+  const encryptedPassword = await bcrypt.hash(password, 10);
   const user = {
     firstName: 'Durin',
     lastName: 'Tasondock',
-    password: 'albafikaforNestAuthApp@84',
+    password: encryptedPassword,
     email: 'temgoua484@gmail.com',
     username: 'durin237',
     gid: new uuidv4(),

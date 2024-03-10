@@ -1,8 +1,9 @@
 import { Field, HideField, InputType } from '@nestjs/graphql';
 import { SortOrder } from './sort-order.enum';
+import { UserOrderByRelevanceInput } from './user-order-by-relevance.input';
 
 @InputType()
-export class UserOrderByWithRelationInput {
+export class UserOrderByWithRelationAndSearchRelevanceInput {
   @HideField()
   id?: keyof typeof SortOrder;
 
@@ -27,9 +28,12 @@ export class UserOrderByWithRelationInput {
   @Field(() => SortOrder, { nullable: true })
   email?: keyof typeof SortOrder;
 
-  @Field(() => SortOrder, { nullable: true })
+  @HideField()
   createdAt?: keyof typeof SortOrder;
 
-  @Field(() => SortOrder, { nullable: true })
+  @HideField()
   updatedAt?: keyof typeof SortOrder;
+
+  @Field(() => UserOrderByRelevanceInput, { nullable: true })
+  _relevance?: UserOrderByRelevanceInput;
 }

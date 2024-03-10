@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { JwtModule, JwtService } from '@nestjs/jwt';
+import { PrismaService } from 'nestjs-prisma';
 import { UsersResolver } from 'src/apollo/users/users.resolver';
 import { UsersService } from 'src/apollo/users/users.service';
-import { PrismaService } from 'src/prisma.module';
 import { AuthResolver } from './auth.resolver';
 import { AuthService } from './auth.service';
 

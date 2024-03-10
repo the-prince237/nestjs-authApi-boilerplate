@@ -1,8 +1,7 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 
-export
 @ObjectType()
-class RegisterResponse {
+export class AuthResponse {
   @Field({ nullable: false })
   token: string;
 }

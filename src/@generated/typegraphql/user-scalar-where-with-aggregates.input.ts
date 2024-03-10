@@ -38,9 +38,9 @@ export class UserScalarWhereWithAggregatesInput {
   @Field(() => StringWithAggregatesFilter, { nullable: true })
   email?: StringWithAggregatesFilter;
 
-  @Field(() => DateTimeWithAggregatesFilter, { nullable: true })
+  @HideField()
   createdAt?: DateTimeWithAggregatesFilter;
 
-  @Field(() => DateTimeWithAggregatesFilter, { nullable: true })
+  @HideField()
   updatedAt?: DateTimeWithAggregatesFilter;
 }

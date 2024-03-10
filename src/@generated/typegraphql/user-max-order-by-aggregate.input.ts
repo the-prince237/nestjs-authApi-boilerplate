@@ -27,9 +27,9 @@ export class UserMaxOrderByAggregateInput {
   @Field(() => SortOrder, { nullable: true })
   email?: keyof typeof SortOrder;
 
-  @Field(() => SortOrder, { nullable: true })
+  @HideField()
   createdAt?: keyof typeof SortOrder;
 
-  @Field(() => SortOrder, { nullable: true })
+  @HideField()
   updatedAt?: keyof typeof SortOrder;
 }

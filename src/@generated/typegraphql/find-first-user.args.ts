@@ -1,7 +1,7 @@
 import { ArgsType, Field, Int } from '@nestjs/graphql';
 import { Prisma } from '@prisma/client';
 import { Type } from 'class-transformer';
-import { UserOrderByWithRelationInput } from './user-order-by-with-relation.input';
+import { UserOrderByWithRelationAndSearchRelevanceInput } from './user-order-by-with-relation-and-search-relevance.input';
 import { UserScalarFieldEnum } from './user-scalar-field.enum';
 import { UserWhereUniqueInput } from './user-where-unique.input';
 import { UserWhereInput } from './user-where.input';
@@ -12,13 +12,15 @@ export class FindFirstUserArgs {
   @Type(() => UserWhereInput)
   where?: UserWhereInput;
 
-  @Field(() => [UserOrderByWithRelationInput], { nullable: true })
-  orderBy?: Array<UserOrderByWithRelationInput>;
+  @Field(() => [UserOrderByWithRelationAndSearchRelevanceInput], {
+    nullable: true,
+  })
+  orderBy?: Array<UserOrderByWithRelationAndSearchRelevanceInput>;
 
   @Field(() => UserWhereUniqueInput, { nullable: true })
   cursor?: Prisma.AtLeast<
     UserWhereUniqueInput,
-    'id' | 'gid' | 'urlSlug' | 'username' | 'email'
+    'id' | 'gid' | 'urlSlug' | 'username' | 'email' | 'firstName_lastName'
   >;
 
   @Field(() => Int, { nullable: true })

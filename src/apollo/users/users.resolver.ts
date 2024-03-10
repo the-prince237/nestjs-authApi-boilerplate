@@ -4,12 +4,12 @@ import { UsersService } from './users.service';
 
 @Resolver(() => User)
 export class UsersResolver {
-  constructor(private readonly Userervice: UsersService) {}
+  constructor(private readonly usersService: UsersService) {}
 
   @Query(() => [User])
   async getAllUser(): Promise<User[]> {
     try {
-      return await this.Userervice.getAllUser();
+      return await this.usersService.getAllUser();
     } catch (error) {
       throw new Error('An error occured !');
     }

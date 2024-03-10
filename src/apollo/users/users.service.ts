@@ -1,11 +1,12 @@
 import { ConflictException, Injectable } from '@nestjs/common';
+import { PrismaService } from 'nestjs-prisma';
 import { UserCreateInput } from 'src/@generated/typegraphql';
-import { PrismaService } from 'src/prisma.module';
 import { SlugOrUid } from '../types/ProductQueryArgs';
 
 @Injectable()
 export class UsersService {
   constructor(private prisma: PrismaService) {}
+
   async getAllUser() {
     return await this.prisma.user.findMany();
   }

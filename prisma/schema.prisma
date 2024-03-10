@@ -5,7 +5,8 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions", "fullTextSearch"]
 }
 
 generator nestgraphql {
@@ -21,8 +22,9 @@ generator nestgraphql {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  extensions = [citext]
 }
 
 model User {
@@ -37,8 +39,10 @@ model User {
   password  String   @db.VarChar(100)
   username  String   @unique @db.VarChar(100)
   email     String   @unique @db.VarChar(45)
-  /// @TypeGraphQL.omit(input: ['create', 'update'])
+  /// @TypeGraphQL.omit(input: true)
   createdAt DateTime @default(now())
-  /// @TypeGraphQL.omit(input: ['create', 'update'])
+  /// @TypeGraphQL.omit(input: true)
   updatedAt DateTime @updatedAt
+
+  @@unique([firstName, lastName])
 }

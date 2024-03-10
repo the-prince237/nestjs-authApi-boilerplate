@@ -9,6 +9,6 @@ export class FindUniqueUserOrThrowArgs {
   @Type(() => UserWhereUniqueInput)
   where!: Prisma.AtLeast<
     UserWhereUniqueInput,
-    'id' | 'gid' | 'urlSlug' | 'username' | 'email'
+    'id' | 'gid' | 'urlSlug' | 'username' | 'email' | 'firstName_lastName'
   >;
 }

@@ -38,9 +38,9 @@ export class UserWhereInput {
   @Field(() => StringFilter, { nullable: true })
   email?: StringFilter;
 
-  @Field(() => DateTimeFilter, { nullable: true })
+  @HideField()
   createdAt?: DateTimeFilter;
 
-  @Field(() => DateTimeFilter, { nullable: true })
+  @HideField()
   updatedAt?: DateTimeFilter;
 }
