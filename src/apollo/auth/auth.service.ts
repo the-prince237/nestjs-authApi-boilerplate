@@ -8,6 +8,8 @@ import * as bcrypt from 'bcrypt';
 import slug from 'elegant-slug';
 import { PrismaService } from 'nestjs-prisma';
 import { UserCreateInput } from 'src/@generated/typegraphql/user-create.inputArgs';
+import { ConfigService } from 'src/config/config.service';
+import { v4 as uuidv4 } from 'uuid';
 import { UsersService } from '../users/users.service';
 import { LoginDto } from './dto/login-user.dto';
 
@@ -37,7 +39,10 @@ export class AuthService {
     }
 
     return {
-      token: this.jwtService.sign({ username }),
+      token: this.jwtService.sign(
+        { username },
+        { secret: ConfigService.config.jwtSecretKey },
+      ),
     };
   }
 
@@ -51,6 +56,7 @@ export class AuthService {
         letterCase: 'lowercase',
       }),
       password: encryptedPassword,
+      gid: uuidv4(),
     };
 
     const user = await this.UserService.createUser(registerPayload);
@@ -58,7 +64,10 @@ export class AuthService {
     console.log({ user });
 
     return {
-      token: this.jwtService.sign({ username: user.username }),
+      token: this.jwtService.sign(
+        { username: user.username },
+        { secret: ConfigService.config.jwtSecretKey },
+      ),
     };
   }
 }

@@ -20,7 +20,7 @@ export class FindFirstUserArgs {
   @Field(() => UserWhereUniqueInput, { nullable: true })
   cursor?: Prisma.AtLeast<
     UserWhereUniqueInput,
-    'id' | 'gid' | 'urlSlug' | 'username' | 'email' | 'firstName_lastName'
+    'id' | 'gid' | 'urlSlug' | 'username' | 'email'
   >;
 
   @Field(() => Int, { nullable: true })

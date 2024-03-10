@@ -5,7 +5,6 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { CaslModule } from 'nest-casl';
 import { PrismaModule } from 'nestjs-prisma';
 import { ApolloModule } from './apollo/apollo.module';
-import { AuthModule } from './apollo/auth/auth.module';
 import { Roles } from './authz/app.roles';
 import { User } from './authz/auth.user';
 import { HttpErrorFilter } from './common/http-error.filter';
@@ -35,7 +34,6 @@ import { ConfigModule } from './config/config.module';
       fieldResolverEnhancers: ['guards'],
       context: ({ req, res }) => ({ req, res }),
     }),
-    AuthModule,
   ],
   providers: [
     {

@@ -1,10 +1,9 @@
-import { Field, ObjectType } from '@nestjs/graphql';
-import { GraphQLBigInt } from 'graphql-scalars';
+import { Field, Int, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
 export class User {
-  @Field(() => GraphQLBigInt, { nullable: false })
-  id!: bigint;
+  @Field(() => Int, { nullable: false })
+  id!: number;
 
   @Field(() => String, { nullable: false })
   gid!: string;

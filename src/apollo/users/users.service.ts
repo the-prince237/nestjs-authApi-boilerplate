@@ -15,7 +15,7 @@ export class UsersService {
     return await this.prisma.user.findUnique({ where: { ...args } });
   }
 
-  async findOne(id: number | bigint) {
+  async findOne(id: number) {
     return this.prisma.user.findUnique({ where: { id } });
   }
 
@@ -25,11 +25,11 @@ export class UsersService {
       where: { username },
     });
 
-    if (existing) {
-      throw new ConflictException('User already exist');
+    if (!existing) {
+      return await this.prisma.user.create({ data });
     }
 
-    return this.prisma.user.create({ data });
+    throw new ConflictException('User already exist');
   }
 
   async getAllUsingOffsetPagination(args) {
@@ -52,7 +52,7 @@ export class UsersService {
     });
   }
 
-  remove(id: bigint | number) {
+  remove(id: number) {
     return this.prisma.user.delete({ where: { id } });
   }
 }

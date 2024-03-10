@@ -14,6 +14,6 @@ export class UpdateOneUserArgs {
   @Type(() => UserWhereUniqueInput)
   where!: Prisma.AtLeast<
     UserWhereUniqueInput,
-    'id' | 'gid' | 'urlSlug' | 'username' | 'email' | 'firstName_lastName'
+    'id' | 'gid' | 'urlSlug' | 'username' | 'email'
   >;
 }

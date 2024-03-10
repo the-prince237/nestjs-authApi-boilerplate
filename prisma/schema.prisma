@@ -10,15 +10,13 @@ generator client {
 }
 
 generator nestgraphql {
-  provider                        = "node node_modules/prisma-nestjs-graphql"
-  output                          = "../src/@generated/typegraphql"
-  outputFilePattern               = "{name}.{type}.ts"
-  reExport                        = Single
-  purgeOutput                     = true
-  noTypeId                        = true
-  noAtomicOperations              = true
-  graphqlScalars_BigInt_name      = "GraphQLBigInt"
-  graphqlScalars_BigInt_specifier = "graphql-scalars"
+  provider           = "node node_modules/prisma-nestjs-graphql"
+  output             = "../src/@generated/typegraphql"
+  outputFilePattern  = "{name}.{type}.ts"
+  reExport           = Single
+  purgeOutput        = true
+  noTypeId           = true
+  noAtomicOperations = true
 }
 
 datasource db {
@@ -29,7 +27,7 @@ datasource db {
 
 model User {
   /// @TypeGraphQL.omit(input: true)
-  id        BigInt   @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   /// @TypeGraphQL.omit(input: true)
   gid       String   @unique
   /// @TypeGraphQL.omit(input: true)
@@ -43,6 +41,4 @@ model User {
   createdAt DateTime @default(now())
   /// @TypeGraphQL.omit(input: true)
   updatedAt DateTime @updatedAt
-
-  @@unique([firstName, lastName])
 }

@@ -25,7 +25,7 @@ interface Gid {
 }
 
 interface Id {
-  id: bigint;
+  id: number;
 }
 
 interface Email {

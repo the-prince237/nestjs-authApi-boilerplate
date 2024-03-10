@@ -3,7 +3,7 @@ import { Field, HideField, InputType } from '@nestjs/graphql';
 @InputType()
 export class UserUncheckedUpdateManyInput {
   @HideField()
-  id?: bigint | number;
+  id?: number;
 
   @HideField()
   gid?: string;

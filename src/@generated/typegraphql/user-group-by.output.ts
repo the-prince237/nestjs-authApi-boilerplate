@@ -1,5 +1,4 @@
-import { Field, ObjectType } from '@nestjs/graphql';
-import { GraphQLBigInt } from 'graphql-scalars';
+import { Field, Int, ObjectType } from '@nestjs/graphql';
 import { UserAvgAggregate } from './user-avg-aggregate.output';
 import { UserCountAggregate } from './user-count-aggregate.output';
 import { UserMaxAggregate } from './user-max-aggregate.output';
@@ -8,8 +7,8 @@ import { UserSumAggregate } from './user-sum-aggregate.output';
 
 @ObjectType()
 export class UserGroupBy {
-  @Field(() => GraphQLBigInt, { nullable: false })
-  id!: bigint | number;
+  @Field(() => Int, { nullable: false })
+  id!: number;
 
   @Field(() => String, { nullable: false })
   gid!: string;

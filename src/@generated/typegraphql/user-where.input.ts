@@ -1,6 +1,6 @@
 import { Field, HideField, InputType } from '@nestjs/graphql';
-import { BigIntFilter } from './big-int-filter.input';
 import { DateTimeFilter } from './date-time-filter.input';
+import { IntFilter } from './int-filter.input';
 import { StringFilter } from './string-filter.input';
 
 @InputType()
@@ -15,7 +15,7 @@ export class UserWhereInput {
   NOT?: Array<UserWhereInput>;
 
   @HideField()
-  id?: BigIntFilter;
+  id?: IntFilter;
 
   @HideField()
   gid?: StringFilter;

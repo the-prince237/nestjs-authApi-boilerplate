@@ -178,7 +178,7 @@ const generate = async () => {
             'UseAbility',
           ]);
 
-          ts.writeImports('../../../auth/auth.guard', ['JwtAuthGuard']);
+          ts.writeImports('../../auth/auth.guard', ['JwtAuthGuard']);
 
           ts.writeLine();
 

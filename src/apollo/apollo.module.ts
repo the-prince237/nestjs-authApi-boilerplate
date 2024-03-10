@@ -28,7 +28,7 @@ import { UsersService } from './users/users.service';
     HttpModule,
     ConfigModule,
     JwtModule.registerAsync({
-      useFactory: async () => ({ secret: process.env.JWT_SECRET }),
+      useFactory: async () => ({ secret: 'w3PDlfr0H2za8TU0' }),
     }),
   ],
 })

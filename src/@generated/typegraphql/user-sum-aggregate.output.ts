@@ -1,8 +1,7 @@
-import { Field, ObjectType } from '@nestjs/graphql';
-import { GraphQLBigInt } from 'graphql-scalars';
+import { Field, Int, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
 export class UserSumAggregate {
-  @Field(() => GraphQLBigInt, { nullable: true })
-  id?: bigint | number;
+  @Field(() => Int, { nullable: true })
+  id?: number;
 }

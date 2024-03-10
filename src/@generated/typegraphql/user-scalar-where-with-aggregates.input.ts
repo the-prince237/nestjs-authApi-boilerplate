@@ -1,6 +1,6 @@
 import { Field, HideField, InputType } from '@nestjs/graphql';
-import { BigIntWithAggregatesFilter } from './big-int-with-aggregates-filter.input';
 import { DateTimeWithAggregatesFilter } from './date-time-with-aggregates-filter.input';
+import { IntWithAggregatesFilter } from './int-with-aggregates-filter.input';
 import { StringWithAggregatesFilter } from './string-with-aggregates-filter.input';
 
 @InputType()
@@ -15,7 +15,7 @@ export class UserScalarWhereWithAggregatesInput {
   NOT?: Array<UserScalarWhereWithAggregatesInput>;
 
   @HideField()
-  id?: BigIntWithAggregatesFilter;
+  id?: IntWithAggregatesFilter;
 
   @HideField()
   gid?: StringWithAggregatesFilter;
