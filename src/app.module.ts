@@ -25,11 +25,7 @@ import { ConfigModule } from './config/config.module';
       introspection: true,
       csrfPrevention: false,
       status400ForVariableCoercionErrors: true,
-      formatError: (formattedError, error) => {
-        console.log('formattedError', formattedError);
-        console.log('error', error);
-        return formattedError;
-      },
+      formatError: (formattedError) => formattedError,
       playground: true,
       fieldResolverEnhancers: ['guards'],
       context: ({ req, res }) => ({ req, res }),

@@ -63,9 +63,7 @@ export class UsersService {
 
   async getLoggedInUser(username: string) {
     try {
-      const user = await this.prisma.user.findUnique({ where: { username } });
-      console.log({ user });
-      return user;
+      return await this.prisma.user.findUnique({ where: { username } });
     } catch (e) {
       throw e;
     }

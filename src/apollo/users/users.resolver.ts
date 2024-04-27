@@ -49,8 +49,6 @@ export class UsersResolver {
           { password: encryptedPassword },
         );
 
-        console.log({ success: true });
-
         return { success: true };
       }
       throw new BadRequestException('Wrong password !');

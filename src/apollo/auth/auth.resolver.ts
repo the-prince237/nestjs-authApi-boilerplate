@@ -26,7 +26,6 @@ export class AuthResolver {
   @Query(() => UserLoggedInResponse)
   userIsLoggedIn(@Context('req') request: any): UserLoggedInResponse {
     const token = extractTokenFromHeader(request);
-    console.log({ loggedIn: !!token });
     return { loggedIn: !!token };
   }
 

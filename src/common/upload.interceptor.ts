@@ -156,7 +156,6 @@ export const storeUpload = async (
       .pipe(fs.createWriteStream(path))
       .on('finish', () => resolve({ path, ext, uid }))
       .on('error', (error) => {
-        console.log('err', error);
         fs.unlink(path, () => {
           reject(error);
         });
