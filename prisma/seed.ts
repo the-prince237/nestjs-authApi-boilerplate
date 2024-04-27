@@ -14,7 +14,7 @@ async function main() {
     password: encryptedPassword,
     email: 'temgoua484@gmail.com',
     username: 'durin237',
-    gid: new uuidv4(),
+    gid: uuidv4(),
     urlSlug: slug('durin-tasondocok', {
       unique: true,
       letterCase: 'lowercase',

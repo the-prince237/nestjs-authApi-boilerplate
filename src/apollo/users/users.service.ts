@@ -1,6 +1,6 @@
 import { ConflictException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'nestjs-prisma';
-import { UserCreateInput } from 'src/@generated/typegraphql';
+import { UserCreateInput, UserUpdateInput } from 'src/@generated/typegraphql';
 import { SlugOrUid } from '../types/ProductQueryArgs';
 
 @Injectable()
@@ -9,6 +9,15 @@ export class UsersService {
 
   async getAllUser() {
     return await this.prisma.user.findMany();
+  }
+
+  async update(args: { username: string }, data: UserUpdateInput) {
+    try {
+      const user = await this.prisma.user.update({ where: args, data });
+      return user;
+    } catch (e) {
+      throw e;
+    }
   }
 
   async findUser(args: SlugOrUid) {
@@ -50,6 +59,16 @@ export class UsersService {
     return this.prisma.user.count({
       where: args.filter,
     });
+  }
+
+  async getLoggedInUser(username: string) {
+    try {
+      const user = await this.prisma.user.findUnique({ where: { username } });
+      console.log({ user });
+      return user;
+    } catch (e) {
+      throw e;
+    }
   }
 
   remove(id: number) {

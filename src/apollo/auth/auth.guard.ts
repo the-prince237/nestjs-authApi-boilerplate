@@ -9,6 +9,13 @@ import { JwtService } from '@nestjs/jwt';
 import { AuthGuard } from '@nestjs/passport';
 import { Request } from 'express';
 
+export const extractTokenFromHeader = (
+  request: Request,
+): string | undefined => {
+  const [type, token] = request.headers.authorization?.split(' ') ?? [];
+  return type === 'Bearer' ? token : undefined;
+};
+
 @Injectable()
 export class JwtAuthGuard extends AuthGuard('jwt') {
   private logger = new Logger(JwtAuthGuard.name);
@@ -39,10 +46,7 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
     return true;
   }
 
-  private extractTokenFromHeader = (request: Request): string | undefined => {
-    const [type, token] = request.headers.authorization?.split(' ') ?? [];
-    return type === 'Bearer' ? token : undefined;
-  };
+  private extractTokenFromHeader = extractTokenFromHeader;
 
   handleRequest(err, user) {
     if (err || !user) {

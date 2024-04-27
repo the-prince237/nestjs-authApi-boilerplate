@@ -4,6 +4,7 @@
 
 type AuthResponse {
   token: String!
+  user: User!
 }
 
 """
@@ -17,7 +18,10 @@ type ListMetadata {
 
 type Mutation {
   deleteUser(id: Int!): User!
-  register(email: String!, firstName: String!, lastName: String!, password: String!, username: String!): AuthResponse!
+  login(password: String!, username: String!): AuthResponse!
+  register(email: String!, firstName: String!, lastName: String!, password: String!, username: String!): User!
+  signOut: SignOutResponse!
+  updatePassword(newPassword: String!, password: String!): SuccessResponse!
 }
 
 type Query {
@@ -25,7 +29,16 @@ type Query {
   _allUsersMeta(filter: UserAdminFilter, page: Int, perPage: Int, sortField: String, sortOrder: String): ListMetadata
   allUsers(filter: UserAdminFilter, page: Int, perPage: Int, sortField: String, sortOrder: String): [User]
   getAllUser: [User!]!
-  login(password: String!, username: String!): AuthResponse!
+  me: User!
+  userIsLoggedIn: UserLoggedInResponse!
+}
+
+type SignOutResponse {
+  success: Boolean!
+}
+
+type SuccessResponse {
+  success: Boolean!
 }
 
 type User {
@@ -62,6 +75,10 @@ type UserCountAggregate {
   updatedAt: Int!
   urlSlug: Int!
   username: Int!
+}
+
+type UserLoggedInResponse {
+  loggedIn: Boolean!
 }
 
 type UserMaxAggregate {
